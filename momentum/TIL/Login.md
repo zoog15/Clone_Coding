@@ -56,8 +56,69 @@ function onLoginSubmit(tomato) {
 loginForm.addEventListener("submit", onLoginSubmit);
 ```
 
-- preventDefault()가 새로고침을 막아줌
+- preventDefault()가 이벤트의 기본동작을 막아줌(새로고침, 페이지 이동 등)
 - addEventListener에 첫번쨰 인자(tomato)에는 현재 페이지에 대한 여러 정보들이 담겨져 나옴
+- eventListener의 실행은 browser가 해주는것
 
 
 
+### Getting Username
+
+```html
+    <form id="login-form">
+        <input required maxlength="15" type="text" placeholder="What is your name?" /">
+        <button>Log in</button>
+    </form>
+    <h1 id="greeting" class="hidden"></h1>
+```
+
+```javascript
+const HIDDEN_CLASSNAME = "hidden";
+
+function onLoginSubmit(event) {
+  event.preventDefault();
+  const username = loginInput.value;
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  console.log(username);
+
+  // greeting.innerText = "Hello " + username;
+  greeting.innerText = `Hello ${username}`; // `` 백틱 사용
+  greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+```
+
+```css
+.hidden {
+  display: none;
+}
+```
+
+- form에 입력된 username을 submit하면 form은 hidden 처리되고 h1의 hidden은 제거
+
+
+
+### Saving Username
+
+```javascript
+localStorage.setItem("NameOfItem", value)
+localStorage.getItem("name")
+localStorage.removeItem("name")
+```
+
+- browser에 localStorage라는 DB와 그에관련된 기능이 구현돼있음
+
+
+
+### Loading Username
+
+```javascript
+if (savedUsername == null) {
+  // show the form
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+  paintGreetings(savedUsername);
+}
+```
+
+- localStorage에 입력된 값을 저장, 만약 localStorage가 비어있으면 form이 나오고 아니면 인삿말이 나옴
