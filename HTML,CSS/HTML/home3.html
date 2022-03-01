@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - My first website.</title>
+</head>
+<body>
+    <form>
+        <div>
+            <!-- <input required type="color" /><br> -->
+            <label for="profile">Profile Photo</label>
+            <input id="profile" type="file" /><br>
+        </div>
+
+        <div>
+            <label for="first-name">First Name</label>
+            <input id="first-name" required placeholder="Name" type="text" />
+        
+
+            <label for="last-name">Last Name</label>
+            <input id="last-name" required placeholder="Last Name" type="text" />
+
+            <label for="user-name">User Name</label>
+            <input id="user-name" required placeholder="Username" minlength="10" type="text" />
+
+            <label for="password">Password</label>
+            <input id="password" required placeholder="Password" type="password" />
+        </div>
+
+        <div>
+            <input type="date" />
+        </div>
+        <div>
+            <input type="submit" value="Create Account" />
+        </div>
+    </form>
+</body>
+</html>
